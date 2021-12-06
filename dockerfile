@@ -3,10 +3,10 @@ RUN apk update
 RUN apk add rhash
 RUN mkdir /tools
 COPY ./filestohash/*.* /www/files/
-COPY --chmod=+x ./src/*.sh /tools/
-RUN rhash /www/files/* --simple -M -H --sha256 >> /www/md5sum_results.txt
-RUN ["chmod", "+x", "./tools/create_html.sh"]
-RUN ["chmod", "+x", "./tools/remove_paths.sh"]
+COPY ./src/*.sh /tools/
+RUN rhash --simple -M -H --sha256 /www/files/*.* >>/www/md5sum_results.txt
+RUN chmod +x ./tools/create_html.sh
+RUN chmod +x ./tools/remove_paths.sh
 RUN ./tools/create_html.sh
 RUN ./tools/remove_paths.sh
 
