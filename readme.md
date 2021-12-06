@@ -1,5 +1,3 @@
-Chilli 
--------
 Container Hosting Infrastructre Lightweight Load Indicators  
 ===========================================================
 
