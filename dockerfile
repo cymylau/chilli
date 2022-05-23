@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-RUN apk update 
+RUN apk update --no-cache
 RUN apk add rhash
 RUN mkdir /tools
 COPY ./filestohash/*.* /www/files/
@@ -11,7 +11,7 @@ RUN ./tools/create_html.sh
 RUN ./tools/remove_paths.sh
 
 FROM alpine:latest
-RUN apk update 
+RUN apk update --no-cache
 RUN apk add nginx
 RUN adduser -D -g 'www' www
 RUN mkdir /www
